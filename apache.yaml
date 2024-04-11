@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - image: tk2407/jenkins-k8s-demo
+        name: apache
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
